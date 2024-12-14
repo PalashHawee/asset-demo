@@ -53,7 +53,7 @@ const Navbar = () => {
             onClick={() => scrollToSection("about")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
-            Who We Are
+            About Us
           </button>
         </li>
         <li>
@@ -61,7 +61,7 @@ const Navbar = () => {
             onClick={() => scrollToSection("ceo")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
-            CEO Message
+            Meet The Team
           </button>
         </li>
         <li>

@@ -8,26 +8,39 @@ const AboutUs = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800 mb-4">About Us</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We are a team of passionate individuals dedicated to creating
-            beautiful and functional web experiences. Our mission is to provide
-            innovative solutions that help businesses grow and thrive online.
+            Asset Advisor, a highly reputed leader in the asset management
+            industry, empowers clients to achieve their financial goals through
+            strategic funding solutions and expert investment guidance. With a
+            strong commitment to sustainable financial growth, Asset Advisor
+            specializes in sourcing and managing funds for individuals and
+            businesses with solid plans and substantial growth potential. Our
+            rigorous standards and deep market insights have established us as a
+            trusted name, renowned for delivering consistent returns while
+            upholding the highest levels of security and transparency.
           </p>
         </div>
 
         {/* Second Div - Two Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 gap-12">
           {/* Column 1 */}
-          <div className="text-center md:text-left">
+          <div className="text-center">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-              Our Vision
+              The Role of Fintech and Its Benefits
             </h3>
             <p className="text-lg text-gray-600">
-              To become a global leader in web development by providing
-              cutting-edge solutions that are both innovative and sustainable.
+              In today’s rapidly evolving financial landscape, fintech has
+              emerged as a powerful tool for modern asset management. Through
+              fintech innova�ons, Asset Advisor provides enhanced access to
+              investment opportuni�es, ensures efficient transac�ons, and offers
+              clients a seamless, technology-driven experience. The benefits of
+              fintech are far-reaching: it enhances security, improves
+              transparency, and facilitates faster, more efficient investment
+              processes, empowering investors to make informed financial
+              decisions with ease and confidence.
             </p>
           </div>
           {/* Column 2 */}
-          <div className="text-center md:text-left">
+          {/* <div className="text-center">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4">
               Our Values
             </h3>
@@ -35,7 +48,7 @@ const AboutUs = () => {
               We believe in integrity, collaboration, and constant learning to
               deliver the best results for our clients.
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

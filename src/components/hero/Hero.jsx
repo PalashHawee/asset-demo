@@ -7,6 +7,7 @@ import BusinessSectors from "./sections/Business";
 import MediaCenter from "./sections/MediaCenter";
 import PhotoGallery from "./sections/PhotoGallery";
 import ContactUs from "./sections/Form";
+import MeetTheTeam from "./sections/Ceo";
 
 const HeroSection = () => {
   return (
@@ -55,7 +56,7 @@ const HeroSection = () => {
           <AboutUs />
         </section>
         <section id="ceo">
-          <CeosMessage />
+          <MeetTheTeam />
         </section>
         <section id="business">
           <BusinessSectors />
@@ -64,13 +65,10 @@ const HeroSection = () => {
           <MediaCenter />
         </section>
         <section id="gallery">
-          <PhotoGallery/>
+          <PhotoGallery />
         </section>
-        <section
-          id="contact"
-          
-        >
-          <ContactUs/>
+        <section id="contact">
+          <ContactUs />
         </section>
       </div>
     </div>
