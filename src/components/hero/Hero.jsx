@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../navbar/Navbar";
-import Logo from "../../assets/logo.png";
 import AboutUs from "./sections/About";
 import CeosMessage from "./sections/Ceo";
 import BusinessSectors from "./sections/Business";
@@ -10,42 +9,57 @@ import ContactUs from "./sections/Form";
 import MeetTheTeam from "./sections/Ceo";
 
 const HeroSection = () => {
+  const words = ["Promising", "Affluence", "Assurance"]; // Words to animate
+  const [currentWordIndex, setCurrentWordIndex] = useState(0); // Track the current word
+  const [displayedText, setDisplayedText] = useState(""); // Text being displayed
+  const [isDeleting, setIsDeleting] = useState(false); // Typing or deleting state
+
+  useEffect(() => {
+    const typeSpeed = isDeleting ? 50 : 100; // Typing and deleting speed
+    const word = words[currentWordIndex];
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && displayedText === word) {
+        // Pause before starting to delete
+        setIsDeleting(true);
+        setTimeout(() => {}, 1000);
+      } else if (isDeleting && displayedText === "") {
+        // Move to the next word
+        setIsDeleting(false);
+        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+      } else {
+        // Update the displayed text
+        const newText = isDeleting
+          ? word.substring(0, displayedText.length - 1)
+          : word.substring(0, displayedText.length + 1);
+        setDisplayedText(newText);
+      }
+    }, typeSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, currentWordIndex]);
+
   return (
     <div className="relative text-black min-h-screen">
       {/* Hero Background */}
       <section id="hero">
         <div
           className="relative w-full h-[500px] bg-cover bg-center"
-          style={{ backgroundImage: `url('/images/hero-banner.jpg')` }}
+          style={{ backgroundImage: `url('/images/nature.jpg')` }}
         >
           {/* Overlay */}
-          <div className="absolute inset-0 bg-white bg-opacity-20"></div>
+          <div className="absolute inset-0 bg-blue-900 bg-opacity-70"></div>
 
           {/* Navbar */}
           <Navbar />
 
           {/* Hero Content */}
-          {/* Hero Content */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
-            {/* Logo with animation */}
-            <div className="mb-6 animate-rotate">
-              <img
-                src={Logo}
-                alt="Asset Advisor Logo"
-                className="h-24 w-24 md:h-32 md:w-32"
-              />
-            </div>
-
-            {/* Title and Subtitle */}
-            <div className="flex flex-col items-center w-auto">
-              <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-black">
-                <span className="text-gold-400">Asset</span>{" "}
-                <span className="text-white">Advisors</span>
-              </h1>
-              {/* <p className="text-xl md:text-2xl italic text-gray-500">
-                ...changing the way of thinking
-              </p> */}
-            </div>
+            {/* Typing Animation */}
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white">
+              {displayedText}
+              <span className="text-gold-400">|</span> {/* Cursor effect */}
+            </h1>
           </div>
         </div>
       </section>
