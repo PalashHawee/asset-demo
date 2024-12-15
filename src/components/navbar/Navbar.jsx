@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react"; // Import Menu and X icons
 import Logo from "../../assets/logo.png";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle menu visibility
+  const navRef = useRef(null); // Reference to the navbar for detecting outside clicks
+
+  // Close the menu if clicked outside
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setIsMenuOpen(false); // Close menu when clicking outside
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
@@ -14,14 +30,16 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="container mx-auto flex justify-between items-center py-4 px-6 text-white sticky top-0 z-50 bg-blue-800 shadow-md">
+    <nav
+      ref={navRef}
+      className="container mx-auto flex justify-between items-center py-4 px-6 text-white sticky top-0 z-50 bg-blue-800 shadow-md"
+    >
       {/* Logo Section */}
       <div className="text-2xl font-bold flex items-center">
         <img src={Logo} alt="Asset Advisor Logo" className="h-20 mr-2 w-20" />
         <span>
           <span className="text-gold-400">Asset</span>
-
-          <span className="text-white ml-2">Advisor</span>
+          <span className="text-white ml-2">Advisors</span>
         </span>
       </div>
 
@@ -36,9 +54,9 @@ const Navbar = () => {
 
       {/* Navigation Links */}
       <ul
-        className={`md:flex md:space-x-6 text-sm uppercase font-semibold transition-all duration-300 ease-in-out ${
+        className={`absolute md:relative top-16 left-0 md:top-0 w-full md:w-auto bg-blue-800 md:bg-transparent z-40 md:flex md:space-x-6 text-sm uppercase font-semibold transition-all duration-300 ease-in-out ${
           isMenuOpen ? "block" : "hidden"
-        } md:block`}
+        }`}
       >
         <li>
           <button

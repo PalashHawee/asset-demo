@@ -28,7 +28,7 @@ const HeroSection = () => {
           {/* Hero Content */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
             {/* Logo with animation */}
-            <div className="mb-6 animate-bounce">
+            <div className="mb-6 animate-rotate">
               <img
                 src={Logo}
                 alt="Asset Advisor Logo"
@@ -40,7 +40,7 @@ const HeroSection = () => {
             <div className="flex flex-col items-center w-auto">
               <h1 className="text-5xl md:text-6xl font-extrabold mb-4 text-black">
                 <span className="text-gold-400">Asset</span>{" "}
-                <span className="text-white">Advisor</span>
+                <span className="text-white">Advisors</span>
               </h1>
               {/* <p className="text-xl md:text-2xl italic text-gray-500">
                 ...changing the way of thinking

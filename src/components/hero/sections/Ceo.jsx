@@ -14,7 +14,8 @@ const MeetTheTeam = () => {
       His leadership has been instrumental in creating sustainable growth and innovative 
       investment solutions for our clients.
     `,
-    image: "https://via.placeholder.com/300",
+    image:
+      "https://cdn.pixabay.com/photo/2020/02/04/18/06/vector-4819009_640.png",
   };
 
   return (
