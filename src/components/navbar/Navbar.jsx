@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react"; // Import Menu and X icons
-import Logo from "../../assets/logo.png";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import Logo from "../../assets/logo.png"; // Import your logo image
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle menu visibility
@@ -32,15 +33,20 @@ const Navbar = () => {
   return (
     <nav
       ref={navRef}
-      className="container mx-auto flex justify-between items-center py-4 px-6 text-white sticky top-0 z-50 bg-blue-800 shadow-md"
+      className="w-full flex justify-between items-center py-4 px-6 text-white sticky top-0 z-50 bg-blue-800 shadow-md"
     >
       {/* Logo Section */}
       <div className="text-2xl font-bold flex items-center">
-        <img src={Logo} alt="Asset Advisor Logo" className="h-20 mr-2 w-20" />
-        <span>
-          <span className="text-gold-400">Asset</span>
-          <span className="text-white ml-2">Advisors</span>
-        </span>
+        <button
+          onClick={() => scrollToSection("hero")} // Scroll to hero section when clicked
+          className="flex items-center"
+        >
+          <img src={Logo} alt="Asset Advisor Logo" className="h-16 mr-2 w-16" />
+          <span>
+            <span className="text-gold-400">Asset</span>
+            <span className="text-white ml-2">Advisors</span>
+          </span>
+        </button>
       </div>
 
       {/* Hamburger Menu Icon */}
@@ -63,7 +69,7 @@ const Navbar = () => {
             onClick={() => scrollToSection("hero")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
-            Home
+            HOME
           </button>
         </li>
         <li>
@@ -71,7 +77,7 @@ const Navbar = () => {
             onClick={() => scrollToSection("about")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
-            About Us
+            ABOUT US
           </button>
         </li>
         <li>
@@ -79,7 +85,7 @@ const Navbar = () => {
             onClick={() => scrollToSection("ceo")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
-            Meet The Team
+            MEET TEAM
           </button>
         </li>
         <li>
@@ -87,23 +93,23 @@ const Navbar = () => {
             onClick={() => scrollToSection("business")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
-            Business Sectors
+            SERVICES
           </button>
         </li>
         <li>
-          <button
-            onClick={() => scrollToSection("media-center")}
+          <Link
+            to="/portfolio"
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
-            Media Center
-          </button>
+            Portfolio
+          </Link>
         </li>
         <li>
           <button
             onClick={() => scrollToSection("gallery")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
-            Gallery
+            GALLERY
           </button>
         </li>
         <li>
@@ -111,7 +117,7 @@ const Navbar = () => {
             onClick={() => scrollToSection("contact")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
-            Contact Us
+            CONTACT US
           </button>
         </li>
       </ul>

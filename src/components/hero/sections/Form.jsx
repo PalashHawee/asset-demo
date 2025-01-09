@@ -1,87 +1,172 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import emailjs from "emailjs-com";
+import { toast, ToastContainer } from "react-toastify"; // Import Toastify
+import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
 
-const ContactUs = () => {
+const Contact = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  // Handle form submission
+  const onSubmit = async (data) => {
+    try {
+      const templateParams = {
+        from_name: data.name, // Sender's name
+        to_name: "Your Company Name", // Recipient's name
+        email: data.email, // Sender's email
+        subject: data.subject, // Subject
+        message: data.message, // Message
+        phone: data.phone, // Phone (if needed)
+      };
+
+      const response = await emailjs.send(
+        "service_2ihzxlz", // Your EmailJS service ID
+        "template_g6ue25k", // Your EmailJS template ID
+        templateParams, // Data to be sent
+        "vqaldIDtu5PMgVDJ7" // Your EmailJS user ID
+      );
+
+      console.log("Form submitted successfully", response);
+      toast.success("Your response has been submitted successfully!"); // Success message
+      reset(); // Reset form fields after submission
+    } catch (error) {
+      console.error("Error in form submission", error);
+      toast.error("There was an error submitting the form. Please try again."); // Error message
+    }
+  };
+
   return (
-    <section className="py-16 px-6 sm:px-8 md:px-16 bg-gray-100">
-      <div className="max-w-screen-md mx-auto bg-white p-8 rounded-lg shadow-md">
-        {/* Title */}
-        <div className="text-center mb-8 animate__animated animate__fadeInUp">
-          <h2 className="text-3xl font-bold text-blue-800 mb-4">Contact Us</h2>
-          <p className="text-lg text-gray-600">
-            We'd love to hear from you! Fill out the form below, and we'll get
-            back to you as soon as possible.
-          </p>
+    <div className="text-black flex justify-center items-center p-6">
+      <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+        {/* Contact Info */}
+        <div className="space-y-6">
+          <h2 className="text-3xl font-bold text-black">Contact</h2>
+          <h3 className="text-4xl font-semibold text-black">
+            We Want to Hear from You
+          </h3>
+          <div className="space-y-4">
+            <div className="flex items-center space-x-4">
+              <div className="bg-blue-600 p-3 rounded-full">
+                <i className="fas fa-map-marker-alt"></i>
+              </div>
+              <p className="text-black">
+                {/* House 39, Road 24, Gulshan 1, Dhaka-1212, Bangladesh */}
+              </p>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="bg-blue-600 p-3 rounded-full">
+                <i className="fas fa-envelope"></i>
+              </div>
+              <p className="text-black">info@assetadvbd.com</p>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="bg-blue-600 p-3 rounded-full">
+                <i className="fas fa-phone-alt"></i>
+              </div>
+              <p className="text-black">+88000000000</p>
+            </div>
+          </div>
         </div>
 
-        {/* Form */}
-        <form className="space-y-6">
-          {/* Name Input */}
-          <div>
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Your Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              className="mt-1 block w-full px-4 py-2 text-gray-700 bg-gray-50 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-              placeholder="Enter your name"
-              required
-            />
-          </div>
-
-          {/* Email Input */}
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Your Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              className="mt-1 block w-full px-4 py-2 text-gray-700 bg-gray-50 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-              placeholder="Enter your email"
-              required
-            />
-          </div>
-
-          {/* Message Textarea */}
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Your Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows="5"
-              className="mt-1 block w-full px-4 py-2 text-gray-700 bg-gray-50 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent"
-              placeholder="Write your message here"
-              required
-            ></textarea>
-          </div>
-
-          {/* Submit Button */}
-          <div className="text-center">
+        {/* Contact Form */}
+        <div className="bg-white text-black p-8 rounded-lg shadow-md">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  {...register("name", { required: "Name is required" })}
+                  className="w-full p-3 border border-gray-300 rounded"
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.name.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Invalid email address",
+                    },
+                  })}
+                  className="w-full p-3 border border-gray-300 rounded"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
+              </div>
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Your Phone"
+                {...register("phone", {
+                  required: "Phone number is required",
+                  pattern: {
+                    value: /^[0-9]{10,15}$/,
+                    message: "Invalid phone number",
+                  },
+                })}
+                className="w-full p-3 border border-gray-300 rounded"
+              />
+              {errors.phone && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.phone.message}
+                </p>
+              )}
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="Subject"
+                {...register("subject", { required: "Subject is required" })}
+                className="w-full p-3 border border-gray-300 rounded"
+              />
+              {errors.subject && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.subject.message}
+                </p>
+              )}
+            </div>
+            <div>
+              <textarea
+                placeholder="Write your message here"
+                {...register("message", { required: "Message is required" })}
+                className="w-full p-3 border border-gray-300 rounded"
+                rows="4"
+              />
+              {errors.message && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.message.message}
+                </p>
+              )}
+            </div>
             <button
               type="submit"
-              className="px-6 py-2 text-white bg-blue-800 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200"
+              className="w-full bg-blue-600 text-white p-3 rounded font-semibold hover:bg-blue-700 transition"
             >
-              Send Message
+              Submit Now
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </section>
+      <ToastContainer /> {/* Add ToastContainer */}
+    </div>
   );
 };
 
-export default ContactUs;
+export default Contact;

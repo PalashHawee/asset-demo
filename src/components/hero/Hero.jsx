@@ -7,6 +7,7 @@ import MediaCenter from "./sections/MediaCenter";
 import PhotoGallery from "./sections/PhotoGallery";
 import ContactUs from "./sections/Form";
 import MeetTheTeam from "./sections/Ceo";
+import Contact from "./sections/Form";
 
 const HeroSection = () => {
   const words = ["Promising", "Affluence", "Assurance"]; // Words to animate
@@ -41,6 +42,7 @@ const HeroSection = () => {
 
   return (
     <div className="relative text-black min-h-screen">
+      <Navbar />
       {/* Hero Background */}
       <section id="hero">
         <div
@@ -51,7 +53,6 @@ const HeroSection = () => {
           <div className="absolute inset-0 bg-blue-900 bg-opacity-70"></div>
 
           {/* Navbar */}
-          <Navbar />
 
           {/* Hero Content */}
           <div className="relative z-10 flex flex-col items-center justify-center h-full text-center">
@@ -75,14 +76,14 @@ const HeroSection = () => {
         <section id="business">
           <BusinessSectors />
         </section>
-        <section id="media-center">
+        {/* <section id="media-center">
           <MediaCenter />
-        </section>
+        </section> */}
         <section id="gallery">
           <PhotoGallery />
         </section>
         <section id="contact">
-          <ContactUs />
+          <Contact />
         </section>
       </div>
     </div>
