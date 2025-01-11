@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react"; // Import Menu and X icons
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Import Link from react-router-dom
 import Logo from "../../assets/logo.png"; // Import your logo image
 
 const Navbar = () => {
@@ -30,6 +30,28 @@ const Navbar = () => {
     }
   };
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavigationClick = (id) => {
+    if (location.pathname !== "/") {
+      // Navigate to the home page and scroll to the section after rendering
+      navigate("/", { state: { targetSection: id } });
+    } else {
+      // Scroll directly to the section if already on the home page
+      scrollToSection(id);
+    }
+  };
+
+  useEffect(() => {
+    // Check if there's a target section in state when navigating to the home page
+    if (location.state?.targetSection) {
+      const targetSection = location.state.targetSection;
+      scrollToSection(targetSection);
+      navigate(location.pathname, { replace: true }); // Remove state after handling
+    }
+  }, [location, navigate]);
+
   return (
     <nav
       ref={navRef}
@@ -38,7 +60,7 @@ const Navbar = () => {
       {/* Logo Section */}
       <div className="text-2xl font-bold flex items-center">
         <button
-          onClick={() => scrollToSection("hero")} // Scroll to hero section when clicked
+          onClick={() => handleNavigationClick("hero")} // Redirect to the hero section or home page
           className="flex items-center"
         >
           <img src={Logo} alt="Asset Advisor Logo" className="h-16 mr-2 w-16" />
@@ -66,7 +88,7 @@ const Navbar = () => {
       >
         <li>
           <button
-            onClick={() => scrollToSection("hero")}
+            onClick={() => handleNavigationClick("hero")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
             HOME
@@ -74,7 +96,7 @@ const Navbar = () => {
         </li>
         <li>
           <button
-            onClick={() => scrollToSection("about")}
+            onClick={() => handleNavigationClick("about")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
             ABOUT US
@@ -82,7 +104,7 @@ const Navbar = () => {
         </li>
         <li>
           <button
-            onClick={() => scrollToSection("ceo")}
+            onClick={() => handleNavigationClick("ceo")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
             MEET TEAM
@@ -90,7 +112,7 @@ const Navbar = () => {
         </li>
         <li>
           <button
-            onClick={() => scrollToSection("business")}
+            onClick={() => handleNavigationClick("business")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
             SERVICES
@@ -106,15 +128,15 @@ const Navbar = () => {
         </li>
         <li>
           <button
-            onClick={() => scrollToSection("gallery")}
+            onClick={() => handleNavigationClick("projects")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
-            GALLERY
+            PROJECTS
           </button>
         </li>
         <li>
           <button
-            onClick={() => scrollToSection("contact")}
+            onClick={() => handleNavigationClick("contact")}
             className="block py-2 px-4 hover:text-gold-300 focus:outline-none"
           >
             CONTACT US

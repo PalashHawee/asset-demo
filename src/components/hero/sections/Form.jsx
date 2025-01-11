@@ -17,7 +17,7 @@ const Contact = () => {
     try {
       const templateParams = {
         from_name: data.name, // Sender's name
-        to_name: "Your Company Name", // Recipient's name
+        to_name: "Asset Advisors Bangladesh", // Recipient's name
         email: data.email, // Sender's email
         subject: data.subject, // Subject
         message: data.message, // Message
@@ -25,10 +25,10 @@ const Contact = () => {
       };
 
       const response = await emailjs.send(
-        "service_2ihzxlz", // Your EmailJS service ID
-        "template_g6ue25k", // Your EmailJS template ID
+        "service_k7u2pvo", // Your EmailJS service ID
+        "template_sgsc5sg", // Your EmailJS template ID
         templateParams, // Data to be sent
-        "vqaldIDtu5PMgVDJ7" // Your EmailJS user ID
+        "6Na3IjMksVn9oDDaO" // Your EmailJS user ID
       );
 
       console.log("Form submitted successfully", response);

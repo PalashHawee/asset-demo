@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import KeyServices from "./KeyServices";
 
 const BusinessSectors = () => {
   const [sectors, setSectors] = useState([]);
@@ -77,6 +78,7 @@ const BusinessSectors = () => {
             </div>
           ))}
         </div>
+        <KeyServices/>
       </div>
     </section>
   );

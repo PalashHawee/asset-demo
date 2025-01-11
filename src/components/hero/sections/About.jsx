@@ -1,4 +1,5 @@
 import React from "react";
+import Mission from "./Mission";
 
 const AboutUs = () => {
   return (
@@ -31,12 +32,12 @@ const AboutUs = () => {
               In today’s rapidly evolving financial landscape, fintech has
               emerged as a powerful tool for modern asset management. Through
               fintech innovations, Asset Advisor provides enhanced access to
-              investment opportunities, ensures efficient transactions, and offers
-              clients a seamless, technology-driven experience. The benefits of
-              fintech are far-reaching: it enhances security, improves
-              transparency, and facilitates faster, more efficient investment
-              processes, empowering investors to make informed financial
-              decisions with ease and confidence.
+              investment opportunities, ensures efficient transactions, and
+              offers clients a seamless, technology-driven experience. The
+              benefits of fintech are far-reaching: it enhances security,
+              improves transparency, and facilitates faster, more efficient
+              investment processes, empowering investors to make informed
+              financial decisions with ease and confidence.
             </p>
           </div>
           {/* Column 2 */}
@@ -49,6 +50,7 @@ const AboutUs = () => {
               deliver the best results for our clients.
             </p>
           </div> */}
+          <Mission />
         </div>
       </div>
     </section>

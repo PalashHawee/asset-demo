@@ -8,6 +8,9 @@ import PhotoGallery from "./sections/PhotoGallery";
 import ContactUs from "./sections/Form";
 import MeetTheTeam from "./sections/Ceo";
 import Contact from "./sections/Form";
+import BusinessNature from "./sections/BusinessNature";
+import InternationalConnection from "./sections/Connection";
+import ProjectsInBangladesh from "./sections/Projects";
 
 const HeroSection = () => {
   const words = ["Promising", "Affluence", "Assurance"]; // Words to animate
@@ -79,9 +82,15 @@ const HeroSection = () => {
         {/* <section id="media-center">
           <MediaCenter />
         </section> */}
-        <section id="gallery">
+        {/* <section id="gallery">
           <PhotoGallery />
+        </section> */}
+        <BusinessNature />
+        <InternationalConnection />
+        <section id="projects">
+          <ProjectsInBangladesh />
         </section>
+
         <section id="contact">
           <Contact />
         </section>
