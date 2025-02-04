@@ -4,15 +4,15 @@ const ProjectsInBangladesh = () => {
   const projects = [
     {
       title: "Real Estate",
-      logo: "https://via.placeholder.com/100x100", // Replace with the actual logo URL for Real Estate
+      logo: "/images/primeplace.png", // Replace with the actual logo URL for Real Estate
     },
     {
       title: "Fintech",
-      logo: "https://via.placeholder.com/100x100", // Replace with the actual logo URL for Fintech
+      logo: "/images/fintech.png", // Replace with the actual logo URL for Fintech
     },
     {
       title: "Travel",
-      logo: "https://via.placeholder.com/100x100", // Replace with the actual logo URL for Travel
+      logo: "/images/travel.png", // Replace with the actual logo URL for Travel
     },
   ];
 

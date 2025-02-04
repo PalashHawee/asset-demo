@@ -15,7 +15,7 @@ const MeetTheTeam = () => {
       investment solutions for our clients.
     `,
     image:
-      "https://cdn.pixabay.com/photo/2020/02/04/18/06/vector-4819009_640.png",
+      "/images/assetceo.jpeg",
   };
 
   return (

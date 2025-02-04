@@ -55,7 +55,7 @@ const Contact = () => {
                 <i className="fas fa-map-marker-alt"></i>
               </div>
               <p className="text-black">
-                {/* House 39, Road 24, Gulshan 1, Dhaka-1212, Bangladesh */}
+                House X, Road Y, Dhaka-1212, Bangladesh
               </p>
             </div>
             <div className="flex items-center space-x-4">

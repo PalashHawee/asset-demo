@@ -50,7 +50,7 @@ const HeroSection = () => {
       <section id="hero">
         <div
           className="relative w-full h-[500px] bg-cover bg-center"
-          style={{ backgroundImage: `url('/images/nature.jpg')` }}
+          style={{ backgroundImage: `url('/images/herobanner.jpg')` }}
         >
           {/* Overlay */}
           <div className="absolute inset-0 bg-blue-900 bg-opacity-70"></div>
